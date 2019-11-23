@@ -1,4 +1,4 @@
-package hello;
+package app.user;
 
 
 import org.junit.Test;
