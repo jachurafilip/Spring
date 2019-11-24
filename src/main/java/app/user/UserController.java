@@ -1,19 +1,23 @@
 package app.user;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.List;
 
 @RestController
 public class UserController {
-    private final AtomicLong counter = new AtomicLong();
+    @Autowired
+    UserModel userModel;
 
-    @RequestMapping("/user")
-    public User user(@RequestParam(value = "firstName") String firstName,
-                     @RequestParam(value = "lastName") String lastName)
+    @GetMapping("/")
+    public List findUsers(Model model)
     {
-        return new User(counter.incrementAndGet(),firstName,lastName);
+        System.out.println("HERE");
+        List<User> users = userModel.findAll();
+
+       return users;
     }
 }
