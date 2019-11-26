@@ -12,7 +12,6 @@ public class UserModelImpl implements UserModel {
 
     @Override
     public List<User> findAll() {
-        List<User> users = (List<User>) repository.findAll();
-        return users;
+        return repository.findAll();
     }
 }
